@@ -26,21 +26,20 @@
 
                             <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active text-blue-600" id="laporanKeuangan-tab" data-toggle="tab"
-                                        href="#laporanKeuangan" role="tab" aria-controls="laporanKeuangan"
-                                        aria-selected="true">Laporan Keuangan Perbulan</a>
+                                    <a class="nav-link active text-blue-600" id="laporanTransaksi-tab" data-toggle="tab"
+                                        href="#laporanTransaksi" role="tab" aria-controls="laporanTransaksi"
+                                        aria-selected="true">Laporan Transaksi Perbulan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-blue-600" id="analisisLayananDanPerilaku-tab" data-toggle="tab"
-                                        href="#analisisLayananDanPerilaku" role="tab"
-                                        aria-controls="analisisLayananDanPerilaku" aria-selected="false">Analisis Layanan
-                                        dan Perilaku</a>
+                                    <a class="nav-link text-blue-600" id="laporanKomplain-tab" data-toggle="tab"
+                                        href="#laporanKomplain" role="tab" aria-controls="laporanKomplain"
+                                        aria-selected="false">Laporan Komplain</a>
                                 </li>
                             </ul>
 
                             <div class="tab-content mt-3" id="myTabContent">
-                                <div class="tab-pane fade show active" id="laporanKeuangan" role="tabpanel"
-                                    aria-labelledby="laporanKeuangan-tab">
+                                <div class="tab-pane fade show active" id="laporanTransaksi" role="tabpanel"
+                                    aria-labelledby="laporanTransaksi-tab">
                                     <div class="row">
                                         <div class="col-sm-5">
                                             <form action="{{ route('admin.reports.print') }}" method="post"
@@ -77,21 +76,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade show" id="analisisLayananDanPerilaku" role="tabpanel"
-                                    aria-labelledby="analisisLayananDanPerilaku-tab">
+                                <!-- Komplain -->
+                                <div class="tab-pane fade" id="laporanKomplain" role="tabpanel"
+                                    aria-labelledby="laporanKomplain-tab">
                                     <div class="row">
-                                        <div class="col-sm-8">
-                                            <form action="{{ route('admin.reports.printAnalysis') }}" method="post"
+                                        <div class="col-sm-5">
+                                            <form action="{{ route('admin.reports.printKomplain') }}" method="post"
                                                 target="_blank">
                                                 @csrf
                                                 <div class="form-group row">
-                                                    <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
-                                                    <div class="col-sm-8">
-                                                        <select class="form-control" id="tahun2" name="year">
-                                                            <option value="0" selected="selected" disabled="true">--
-                                                                Silahkan
-                                                                Pilih Tahun
-                                                                --</option>
+                                                    <label for="tahun-komplain"
+                                                        class="col-sm-4 col-form-label">Tahun</label>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" id="tahun-komplain" name="year">
+                                                            <option selected disabled>-- Pilih Tahun --</option>
                                                             @foreach ($years as $year)
                                                                 <option value="{{ $year->Tahun }}">{{ $year->Tahun }}
                                                                 </option>
@@ -100,26 +98,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="bulan_awal" class="col-sm-2 col-form-label">Dari
-                                                        Bulan</label>
-                                                    <div class="col-sm-4">
-                                                        <select class="form-control" id="bulan_awal" name="bulan_awal"
-                                                            disabled>
-                                                            <option value="0" selected disabled>-- Silahkan Pilih Bulan
-                                                                --</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <label for="bulan_akhir" class="col-form-label">-</label>
-                                                    <div class="col-sm-4">
-                                                        <select class="form-control" id="bulan_akhir" name="bulan_akhir"
-                                                            disabled>
-                                                            <option value="0" selected disabled>-- Silahkan Pilih
-                                                                Bulan --</option>
+                                                    <label for="bulan-komplain"
+                                                        class="col-sm-4 col-form-label">Bulan</label>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" id="bulan-komplain" name="month">
+                                                            <option selected disabled>-- Pilih Bulan --</option>
+                                                            @for ($m = 1; $m <= 12; $m++)
+                                                                <option value="{{ $m }}">
+                                                                    {{ DateTime::createFromFormat('!m', $m)->format('F') }}
+                                                                </option>
+                                                            @endfor
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <button type="submit" id="btn-cetak2"
+                                                <button type="submit" id="btn-cetak-komplain"
                                                     class="mt-3 btn btn-success d-none">Cetak</button>
                                             </form>
                                         </div>
@@ -151,10 +143,10 @@
                             // Kosongkan dropdown bulan
                             $('#bulan_awal').empty().append(
                                 '<option selected disabled>-- Silahkan Pilih Bulan --</option>'
-                                );
+                            );
                             $('#bulan_akhir').empty().append(
                                 '<option selected disabled>-- Silahkan Pilih Bulan --</option>'
-                                );
+                            );
 
                             // Aktifkan select bulan
                             $('#bulan_awal').prop('disabled', false);
@@ -186,43 +178,19 @@
             return monthNames[monthNumber - 1];
         }
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('#tahun2').change(function() {
-                var year = $(this).val();
-                if (year) {
-                    $.ajax({
-                        url: '{{ route('admin.reports.getMonth') }}',
-                        type: 'GET',
-                        data: {
-                            year: year
-                        },
-                        success: function(data) {
-                            $('#bulan_awal, #bulan_akhir').empty().append(
-                                '<option selected disabled>-- Silahkan Pilih Bulan --</option>'
-                            ).prop('disabled', false);
 
-                            $.each(data, function(key, value) {
-                                $('#bulan_awal').append('<option value="' + value
-                                    .Bulan + '">' + getMonthName(value.Bulan) +
-                                    '</option>');
-                                $('#bulan_akhir').append('<option value="' + value
-                                    .Bulan + '">' + getMonthName(value.Bulan) +
-                                    '</option>');
-                            });
+    <script>
+        const tahunInput = document.getElementById('tahun-komplain');
+        const bulanInput = document.getElementById('bulan-komplain');
+        const btnCetak = document.getElementById('btn-cetak-komplain');
 
-                            $('#btn-cetak2').removeClass('d-none');
-                        }
-                    });
-                }
-            });
-        });
-
-        function getMonthName(monthNumber) {
-            const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
-                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-            ];
-            return monthNames[monthNumber - 1];
+        function toggleButton() {
+            const tahun = tahunInput.value;
+            const bulan = bulanInput.value;
+            btnCetak.classList.toggle('d-none', !(tahun && bulan));
         }
-    </script> --}}
+
+        tahunInput.addEventListener('change', toggleButton);
+        bulanInput.addEventListener('change', toggleButton);
+    </script>
 @endsection

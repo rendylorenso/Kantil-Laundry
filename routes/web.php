@@ -81,7 +81,8 @@ Route::get('/admin/revenue-data', [DashboardController::class, 'getRevenueData']
 Route::get('/admin/transaksi-data', [DashboardController::class, 'getTransactionData'])->name('admin.transaksi.data');
 Route::get('/admin/reports/get-month', [ReportController::class, 'getMonth'])->name('admin.reports.getMonth');
 // Route::post('/admin/reports/print-analysis', [ReportController::class, 'printAnalysis'])->name('admin.reports.printAnalysis');
-Route::post('admin/reports/printAnalysis', [ReportController::class, 'printAnalysis'])->name('admin.reports.printAnalysis');
+Route::post('/admin/reports/print-komplain', [ReportController::class, 'printKomplain'])->name('admin.reports.printKomplain');
+
 // routes/web.php
 
 

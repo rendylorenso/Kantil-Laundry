@@ -91,65 +91,8 @@
         </tbody>
     </table>
 
-
-    {{-- <div class="relative overflow-x-auto">
-        <table class="w-full text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="">
-                        No
-                    </th>
-                    <th scope="col" class="">
-                        Kode Transaksi
-                    </th>
-                    <th scope="col" class="">
-                        No.Telp
-                    </th>
-                    <th scope="col" class="">
-                        Jenis Pesanan
-                    </th>
-                    <th scope="col" class="">
-                        Alamat
-                    </th>
-                    <th scope="col" class="">
-                        Sub Total
-                    </th>
-                    <th scope="col" class="">
-                        Total Harga
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                    <td class="px-6 py-4">
-                        Silver
-                    </td>
-                    <td class="px-6 py-4">
-                        Laptop
-                    </td>
-                    <td class="px-6 py-4">
-                        $2999
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div> --}}
-
-    {{-- <div class="row mt-3">
-        <div class="col-4 text-end">
-            <p>Surakarta, {{ date('d F Y') }}</p>
-            <br>
-            <br>
-            <br>
-            <p></p>
-        </div>
-    </div> --}}
     <footer class="text-end">
         <span class="text-muted small text-end">Dicetak pada Jakarta, {{ date('d M Y') }}</span>
-        {{-- <br>
-        <br>
-        <br>
-        <p></p> --}}
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
