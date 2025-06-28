@@ -7,16 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cetak Transaksi</title>
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.min.css') }}">
-
-    <style>
-        .rekap-kanan {
-            margin-left: auto;
-            /* “dorong” ke kanan */
-            width: 260px;
-            /* atur lebar sesuai kebutuhan */
-        }
-    </style>
-
 </head>
 
 <body>
@@ -80,6 +70,32 @@
                                     $tot += $item->sub_total;
                                 @endphp
                             @endforeach
+                            <tr>
+                                <td colspan="6" class="text-right"><b>Sub Total Harga</b></td>
+                                <td>{{ 'Rp ' . number_format($tot, 0, ',', '.') }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-right"><b>{{ $transaction->service_type->name }}</b>
+                                </td>
+                                <td>{{ $transaction->getFormattedServiceCost() }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-right"><b>Potongan</b></td>
+                                <td>- {{ $transaction->discount }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-right"><b>Total</b></td>
+                                <td><b>{{ $transaction->getFormattedTotal() }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-right"><b>Dibayar</b></td>
+                                <td><b>{{ $transaction->getFormattedPaymentAmount() }}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-right"><b>Kembalian</b></td>
+                                <td><b>{{ 'Rp ' . number_format($transaction->payment_amount - $transaction->total, 0, ',', '.') }}</b>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 @endif
@@ -112,43 +128,35 @@
                                     $tot += $item->sub_total;
                                 @endphp
                             @endforeach
-                        </tbody>
-                    </table>
-                @endif
-
-                {{-- Bagian bawah (Subtotal, Service Type, dll) --}}
-                {{-- Rekap di kanan --}}
-                <div class="d-flex justify-content-end">
-                    <table class="table table-borderless w-auto">
-                        <tbody>
                             <tr>
-                                <td class="text-right"><b>Sub Total Harga</b></td>
+                                <td colspan="6" class="text-right"><b>Sub Total Harga</b></td>
                                 <td>{{ 'Rp ' . number_format($tot, 0, ',', '.') }}</td>
                             </tr>
                             <tr>
-                                <td class="text-right"><b>{{ $transaction->service_type->name }}</b></td>
+                                <td colspan="6" class="text-right"><b>{{ $transaction->service_type->name }}</b>
+                                </td>
                                 <td>{{ $transaction->getFormattedServiceCost() }}</td>
                             </tr>
                             <tr>
-                                <td class="text-right"><b>Potongan</b></td>
+                                <td colspan="6" class="text-right"><b>Potongan</b></td>
                                 <td>- {{ $transaction->discount }}</td>
                             </tr>
                             <tr>
-                                <td class="text-right"><b>Total</b></td>
+                                <td colspan="6" class="text-right"><b>Total</b></td>
                                 <td><b>{{ $transaction->getFormattedTotal() }}</b></td>
                             </tr>
                             <tr>
-                                <td class="text-right"><b>Dibayar</b></td>
+                                <td colspan="6" class="text-right"><b>Dibayar</b></td>
                                 <td><b>{{ $transaction->getFormattedPaymentAmount() }}</b></td>
                             </tr>
                             <tr>
-                                <td class="text-right"><b>Kembalian</b></td>
+                                <td colspan="6" class="text-right"><b>Kembalian</b></td>
                                 <td><b>{{ 'Rp ' . number_format($transaction->payment_amount - $transaction->total, 0, ',', '.') }}</b>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                @endif
 
             </div>
         </div>
