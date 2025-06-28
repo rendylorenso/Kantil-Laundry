@@ -135,7 +135,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mt-5">
-                <h4>{{ config('app.name') }}</h4>
+                <h4>Kantil Laundry</h4>
                 <h5>Bukti Transaksi</h5>
             </div>
         </div>

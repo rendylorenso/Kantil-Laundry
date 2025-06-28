@@ -42,7 +42,7 @@
 
 </head>
 
-<body>
+<body class="bg-white">
 
     <!-- Navigation -->
     <div class="w-full bg-white pt-3 pb-3 -mt-24">
@@ -50,8 +50,9 @@
             class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-4 flex flex-row items-center justify-between">
                 <a href="#"
-                    class="text-lg font-semibold tracking-widest text-blue-600 uppercase rounded-lg focus:outline-none focus:shadow-outline">Kantil Laundry
-                    
+                    class="text-lg font-semibold tracking-widest text-blue-600 uppercase rounded-lg focus:outline-none focus:shadow-outline">Kantil
+                    Laundry
+
                 </a>
                 <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
@@ -73,7 +74,25 @@
         </div>
     </div>
 
-    <div class="bg-blue-600 h-auto pb-20">
+    <section class="relative h-[90vh] bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('{{ asset('img/landing/Banner.jpg') }}');">
+        <!-- Overlay gelap semi transparan agar teks lebih jelas -->
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+        <!-- Konten teks -->
+        <div class="relative text-center text-white px-6">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Kantil Laundry</h1>
+            <h2 class="text-3xl md:text-4xl font-semibold text-blue-300 mb-2">Dry Cleaning</h2>
+            <p class="text-lg md:text-xl mb-6">"Segar, Bersih, Wangi – Laundry Tanpa Worry!"</p>
+            <a href="#"
+                class="bg-blue-600 hover:bg-blue-800 transition px-6 py-3 text-lg rounded-full font-semibold">
+                Selengkapnya
+            </a>
+        </div>
+    </section>
+
+
+    {{-- <div class="bg-red-600 h-auto pb-20">
         <div class="grid grid-cols-1 md:grid-cols-2">
             <div class="md:ml-20 md:mr-10 md:p-1 mt-14 mb-14 md:mt-15 md:mb-15 text-left md:pt-20 md:pb-10">
                 <h1 class="text-5xl font-extrabold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline"
@@ -92,15 +111,16 @@
 
             <div class="w-full pt-6 px-10 md:px-20 md:h-full md:pt-20 md:pb-10 order-first md:order-last"
                 data-aos="fade-left">
-                <img src="{{ asset('img/landing/illustrator.png') }}" alt="wallpaper" />
+                <img src="{{ asset('img/landing/Banner.jpg') }}" alt="wallpaper" />
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <section class="promo section" id="promo">
+    {{-- <section class="promo section" id="promo">
         <div class="bg-white h-auto">
             <div class="mx-auto pb-10 pt-8">
-                <h1 class="font-semibold text-2xl text-cyan-600 text-center pb-3 sm:pb-3 md:pb-3 lg:pb-8">!!! PROMO !!!</h1>
+                <h1 class="font-semibold text-2xl text-cyan-600 text-center pb-3 sm:pb-3 md:pb-3 lg:pb-8">!!! PROMO !!!
+                </h1>
 
                 <p class="text-center text-sm text-gray-400 pb-4">
                     <i class="fa-solid fa-arrow-left mr-2"></i>
@@ -141,8 +161,30 @@
                 </p>
             </div>
         </div>
-    </section>
+    </section> --}}
 
+    <div class="px-6 py-8">
+        <h2 class="text-center text-2xl font-bold text-cyan-600 mb-4">!!! PROMO !!!</h2>
+        <p class="text-center text-gray-400 mb-8">Geser untuk lihat promo lain</p>
+
+        <div class="flex space-x-6 overflow-x-auto pb-4">
+            <!-- Promo Card 1 -->
+            <div class="min-w-[250px] w-48 h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo1.jpg') }}')">
+            </div>
+
+            <!-- Promo Card 2 -->
+            <div class="min-w-[250px] w-48 h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo1.jpg') }}')">
+                <div class="bg-black/50 w-full text-center p-3">
+                    <p class="font-semibold">Diskon Spesial</p>
+                    <button class="mt-2 bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full text-white">Klaim</button>
+                </div>
+            </div>
+
+            <!-- Tambahkan promo lain dengan format sama -->
+        </div>
+    </div>
 
     <div class="bg-cyan-600 h-auto pb-20">
         <div class="container mx-auto pt-10">
@@ -272,7 +314,7 @@
                         data-aos="fade-up">Alamat</h1>
                     <p class="font-poppins text-lg mt-1 mb-10 mr-5 md:ml-0 md:mr-0 tracking-widest text-white"
                         data-aos="fade-up">
-                        Kedoya Sel., Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11520
+                        Jl. H. Sulaiman No.21, RT.4/RW.1, Petukangan Utara, Kec. Pesanggrahan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12260
                     </p>
 
                     <h1 class="text-2xl font-extrabold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline"
@@ -287,7 +329,7 @@
                     </p> --}}
                     <p class="font-poppins text-lg mt-2 mb-10 mr-5 md:ml-0 md:mr-0 tracking-widest text-white"
                         data-aos="fade-up">
-                        <a href="https://wa.me/6281383004378" target="_blank">(+62) 813-8300-4378 </a>
+                        <a href="https://wa.me/6281383004378" target="_blank">(+62) 812 1347 1726 </a>
                     </p>
                 </div>
 
@@ -297,7 +339,7 @@
                         width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""
                         aria-hidden="false" tabindex="0"></iframe> --}}
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.91530791730187!2d106.76547367125757!3d-6.178261943198367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7aa08928935%3A0x7b5dee2089f038fe!2sJl.%20Palapa%20VII%20No.27%2C%20RT.11%2FRW.1%2C%20Kedoya%20Sel.%2C%20Kec.%20Kb.%20Jeruk%2C%20Kota%20Jakarta%20Barat%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2011520!5e0!3m2!1sid!2sid!4v1745753105882!5m2!1sid!2sid"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1983.1115509372237!2d106.745491744705!3d-6.23429478310189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f0b8c71de9fd%3A0x40cb5f95c1e08581!2sJl.%20H.%20Sulaiman%20No.21%2C%20RT.4%2FRW.1%2C%20Petukangan%20Utara%2C%20Kec.%20Pesanggrahan%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012260!5e0!3m2!1sid!2sid!4v1750875558399!5m2!1sid!2sid"
                         width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>

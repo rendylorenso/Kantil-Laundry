@@ -26,7 +26,7 @@
     <header class="text-center my-3">
         <div class="row">
             <div class="col-12">
-                <h2>{{ config('app.name') }}</h2>
+                <h2>Kantil Laundry</h2>
                 <h5>Laporan Komplain Pelanggan</h5>
                 <p>Bulan {{ $month }} Tahun {{ $yearInput }}</p>
             </div>
