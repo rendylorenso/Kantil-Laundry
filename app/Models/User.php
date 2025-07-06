@@ -105,7 +105,7 @@ class User extends Authenticatable implements UploadedFilesInterface
      */
     public function complaint_suggestions(): HasMany
     {
-        return $this->hasMany(ComplaintSuggestion::class);
+        return $this->hasMany(ComplaintSuggestion::class,  'user_id');
     }
 
     /**

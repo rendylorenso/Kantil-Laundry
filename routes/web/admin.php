@@ -65,44 +65,6 @@ Route::group([
     Route::get('/print/{transaction}', [PrintTransactionController::class, 'index'])->name('print.index');
 });
 
-// Route::group([
-//     'prefix' => 'price-lists',
-//     'as' => 'price-lists.',
-// ], function () {
-//     Route::get('/', [PriceListController::class, 'index'])->name('index');
-//     Route::post('/', [PriceListController::class, 'store'])->name('store');
-//     Route::get('/{priceList}', [PriceListController::class, 'show'])->name('show');
-//     Route::patch('/{priceList}', [PriceListController::class, 'update'])->name('update');
-// });
-
-// Route::prefix('price-lists')->name('price-lists.')->group(function () {
-//     // Untuk Satuan
-//     Route::get('/', [PriceListController::class, 'index'])->name('index');
-//     Route::post('/', [PriceListController::class, 'store'])->name('store');
-//     Route::get('/{priceList}', [PriceListController::class, 'show'])->name('show');
-//     Route::patch('/{priceList}', [PriceListController::class, 'update'])->name('update');
-
-//     // Untuk Kiloan (gunakan subprefix 'kiloan')
-//     Route::prefix('kiloan')->name('kiloan.')->group(function () {
-//         Route::post('/', [PriceListKiloanController::class, 'store'])->name('store');
-//         Route::patch('/{priceListKiloan}', [PriceListKiloanController::class, 'update'])->name('update');
-//         Route::get('/{priceListKiloan}', [PriceListKiloanController::class, 'show'])->name('show');
-//     });
-// });
-
-// Untuk satuan
-// Route::resource('admin/price-lists', \App\Http\Controllers\Admin\PriceListController::class)
-//     ->only(['index', 'store', 'update', 'show'])
-//     ->names('admin.price-lists');
-// Untuk kiloan
-// Route::post('/admin/price-lists-kiloan', [\App\Http\Controllers\Admin\PriceListKiloanController::class, 'store'])
-//     ->name('admin.price-lists-kiloan.store');
-// Route::patch('/admin/price-lists-kiloan/{priceListKiloan}', [\App\Http\Controllers\Admin\PriceListKiloanController::class, 'update'])
-//     ->name('admin.price-lists-kiloan.update');
-// Route::get('/admin/price-lists-kiloan/{priceListKiloan}', [\App\Http\Controllers\Admin\PriceListKiloanController::class, 'show'])
-//     ->name('admin.price-lists-kiloan.show');
-
-
 Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 
 Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
@@ -135,6 +97,7 @@ Route::group([
     Route::get('/', [ReportController::class, 'index'])->name('index');
     Route::post('/print', [ReportController::class, 'print'])->name('print');
     Route::post('/get-month', [ReportController::class, 'getMonth'])->name('get-month');
+    Route::post('/print-member', [ReportController::class, 'printMember'])->name('printMember');
 });
 
 // Route::get('/laporanview', 'laporanview');

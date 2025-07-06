@@ -134,6 +134,69 @@ class ReportController extends Controller
         return $pdf->stream('laporan-komplain-' . $month . '-' . $yearInput . '.pdf');
     }
 
+    // public function printMember(Request $request): Response
+    // {
+    //     $monthInput = $request->input('month');
+    //     $yearInput  = $request->input('year');
+
+    //     // --- Validasi sederhana ---
+    //     if (!is_numeric($monthInput) || !is_numeric($yearInput)) {
+    //         abort(400, 'Input bulan/tahun tidak valid.');
+    //     }
+
+    //     // Buat nama bulan (Bahasa Indonesia) dengan Carbon
+    //     Carbon::setLocale('id');
+    //     $monthName = Carbon::createFromDate($yearInput, $monthInput, 1)
+    //         ->translatedFormat('F');
+
+    //     // Ambil member yang DAFTAR di bulan‑tahun tsb
+    //     // (jika punya kolom/flag role, silakan tambahkan whereRole('member'))
+    //     $members = User::whereMonth('created_at', $monthInput)
+    //         ->whereYear('created_at', $yearInput)
+    //         ->orderBy('created_at', 'asc')
+    //         ->get();
+
+    //     // Kirim ke view PDF
+    //     $pdf = PDF::loadView('admin.report_member_pdf', [
+    //         'monthInput' => $monthInput,
+    //         'yearInput'  => $yearInput,
+    //         'monthName'  => $monthName,
+    //         'members'    => $members,
+    //     ]);
+
+    //     // Nama file: laporan-member-Juli-2025.pdf
+    //     return $pdf->stream('laporan-member-' . $monthName . '-' . $yearInput . '.pdf');
+    // }
+
+
+    public function printMember(Request $request): Response
+    {
+        $yearInput = $request->input('year');
+
+        if (!is_numeric($yearInput)) {
+            abort(400, 'Input tahun tidak valid.');
+        }
+
+        Carbon::setLocale('id');
+
+        $members = User::where('role', 2)
+            ->whereYear('created_at', $yearInput)
+            ->withCount([
+                'transactions',
+                'complaint_suggestions as complaints_count' => function ($q) {
+                    $q->where('type', 2);
+                },
+            ])
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        $pdf = PDF::loadView('admin.report_member_pdf', [
+            'yearInput' => $yearInput,
+            'members'   => $members,
+        ]);
+
+        return $pdf->stream('laporan-member-' . $yearInput . '.pdf');
+    }
 
 
 

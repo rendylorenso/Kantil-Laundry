@@ -35,6 +35,11 @@
                                         href="#laporanKomplain" role="tab" aria-controls="laporanKomplain"
                                         aria-selected="false">Laporan Komplain</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-blue-600" id="laporanMember-tab" data-toggle="tab"
+                                        href="#laporanMember" role="tab" aria-controls="laporanMember"
+                                        aria-selected="false">Laporan Member</a>
+                                </li>
                             </ul>
 
                             <div class="tab-content mt-3" id="myTabContent">
@@ -117,6 +122,35 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Laporan Member -->
+                                <div class="tab-pane fade" id="laporanMember" role="tabpanel"
+                                    aria-labelledby="laporanMember-tab">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <form action="{{ route('admin.reports.printMember') }}" method="post"
+                                                target="_blank">
+                                                @csrf
+                                                <div class="form-group row">
+                                                    <label for="tahun-member"
+                                                        class="col-sm-4 col-form-label">Tahun</label>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" id="tahun-member" name="year"
+                                                            required>
+                                                            <option selected disabled>-- Pilih Tahun --</option>
+                                                            @foreach ($years as $year)
+                                                                <option value="{{ $year->Tahun }}">{{ $year->Tahun }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <button type="submit" id="btn-cetak-member"
+                                                    class="mt-3 btn btn-success d-none">Cetak</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -192,5 +226,13 @@
 
         tahunInput.addEventListener('change', toggleButton);
         bulanInput.addEventListener('change', toggleButton);
+    </script>
+    <script>
+        const tahunInput2 = document.getElementById('tahun-member');
+        const btnCetak2 = document.getElementById('btn-cetak-member');
+
+        tahunInput2.addEventListener('change', function() {
+            btnCetak2.classList.remove('d-none');
+        });
     </script>
 @endsection
