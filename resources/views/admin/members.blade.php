@@ -32,10 +32,16 @@
                                         <th>Jenis Kelamin</th>
                                         <th>Alamat</th>
                                         <th>No Telp</th>
+                                        <th>Bergabung</th>
                                         <th>Poin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        use Carbon\Carbon;
+                                        Carbon::setLocale('id');
+                                    @endphp
+
                                     @foreach ($members as $member)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
@@ -47,13 +53,17 @@
                                                 @elseif ($member->gender == 'P')
                                                     Perempuan
                                                 @else
+                                                    -
                                                 @endif
                                             </td>
                                             <td>{{ $member->address }}</td>
                                             <td>{{ $member->phone_number }}</td>
+                                            <td>{{ Carbon::parse($member->created_at)->translatedFormat('d F Y') }}
+                                            </td>
                                             <td>{{ $member->point }}</td>
                                         </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
                         </div>
