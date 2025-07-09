@@ -167,141 +167,113 @@
         <h2 class="text-center text-2xl font-bold text-cyan-600 mb-4">!!! PROMO !!!</h2>
         <p class="text-center text-gray-400 mb-8">Geser untuk lihat promo lain</p>
 
-        <div class="flex space-x-6 overflow-x-auto pb-4">
+        <!-- Wrapper scroll horizontal -->
+        <div class="flex space-x-6 overflow-x-auto pb-4 w-full">
+
             <!-- Promo Card 1 -->
-            <div class="min-w-[250px] w-48 h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
-                style="background-image: url('{{ asset('img/landing/promo1.jpg') }}')">
+            <div class="min-w-[300px] h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo1.png') }}')">
             </div>
 
             <!-- Promo Card 2 -->
-            <div class="min-w-[250px] w-48 h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
-                style="background-image: url('{{ asset('img/landing/promo1.jpg') }}')">
-                <div class="bg-black/50 w-full text-center p-3">
-                    <p class="font-semibold">Diskon Spesial</p>
-                    <button class="mt-2 bg-blue-600 hover:bg-blue-700 px-4 py-1 rounded-full text-white">Klaim</button>
-                </div>
+            <div class="min-w-[300px] h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo2.png') }}')">
             </div>
 
-            <!-- Tambahkan promo lain dengan format sama -->
+            <!-- Promo Card 3 -->
+            <div class="min-w-[300px] h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo3.png') }}')">
+            </div>
+
+            <!-- Promo Card 4 -->
+            <div class="min-w-[300px] h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo4.png') }}')">
+            </div>
+
+            <!-- Promo Card 5 -->
+            <div class="min-w-[300px] h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo5.png') }}')">
+            </div>
+
+            <!-- Promo Card 6 -->
+            <div class="min-w-[300px] h-64 rounded-xl shadow overflow-hidden bg-cover bg-center flex items-end justify-center text-white relative"
+                style="background-image: url('{{ asset('img/landing/promo6.png') }}')">
+            </div>
+
         </div>
     </div>
 
     <div class="bg-cyan-600 h-auto pb-20">
-        <div class="container mx-auto pt-10">
+        <div class="container mx-auto pt-10 px-4">
 
-            <h1 class="text-center text-4xl text-extrabold font-poppins pt-1 md:pt-1 pb-2 md:pb-2 px-20">
-                <strong class="font-semibold tracking-widest text-gray-900 dark:text-white">Kenapa memilih layanan
-                    laundry kami?</strong>
+            <h1 class="text-center text-4xl font-extrabold font-poppins pb-10">
+                <strong class="tracking-widest text-gray-900 dark:text-white">
+                    Kenapa memilih layanan laundry kami?
+                </strong>
             </h1>
-            {{-- <h1>Kenapa memilih layanan laundry kami?</h1> --}}
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="md:ml-20 md:mr-10 md:p-1 mt-14 mb-14 md:mt-15 md:mb-15 text-left md:pt-20 md:pb-10">
-                    <h5 class="text-xl font-extrabold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline"
-                        data-aos="fade-up">Peralatan Lengkap dan Canggih</h5>
-                    <p class="font-poppins text-lg mt-2 mb-10 mr-5 md:ml-0 md:mr-0 tracking-widest text-white"
-                        data-aos="fade-up">
-                        Laundry kami menggunakan peralatan yang cukup lengkap dan canggih. Peralatan kami memungkinkan
-                        baju tidak perlu dijemur dan mengurangi debu pada baju
+
+            <!-- Section 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10 mb-16">
+                <div>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+                        Peralatan Lengkap dan Canggih
+                    </h5>
+                    <p class="text-white text-lg leading-relaxed" data-aos="fade-up">
+                        Laundry kami menggunakan peralatan yang cukup lengkap dan canggih.
+                        Peralatan kami memungkinkan baju tidak perlu dijemur dan mengurangi debu pada baju.
                     </p>
                 </div>
-                <div class="w-full pt-6 px-10 md:px-20 md:h-full md:pt-20 md:pb-10 order-first md:order-last"
-                    data-aos="fade-left">
-                    <img src="{{ asset('img/landing/1.jpg') }}" alt="wallpaper" />
+                <div data-aos="fade-left">
+                    <img src="{{ asset('img/landing/1.jpg') }}" alt="peralatan laundry"
+                        class="w-full h-[300px] object-cover rounded-xl" />
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="md:ml-20 md:mr-10 md:p-1 mt-14 mb-14 md:mt-15 md:mb-15 text-left md:pt-20 md:pb-10">
-                    <h5 class="text-xl font-extrabold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline"
-                        data-aos="fade-up">Segala Tipe Pakaian</h5>
-                    <p class="font-poppins text-lg mt-2 mb-10 mr-5 md:ml-0 md:mr-0 tracking-widest text-white"
-                        data-aos="fade-up">
+
+            <!-- Section 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10 mb-16">
+                <div data-aos="fade-left">
+                    <img src="{{ asset('img/landing/2.jpg') }}" alt="segala pakaian"
+                        class="w-full h-[300px] object-cover rounded-xl" />
+                </div>
+                <div>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+                        Segala Tipe Pakaian
+                    </h5>
+                    <p class="text-white text-lg leading-relaxed" data-aos="fade-up">
                         Laundry kami menerima segala tipe pakaian mulai dari baju, celana, jas, dan selimut.
                     </p>
                 </div>
-                <div class="w-full pt-6 px-10 md:px-20 md:h-full md:pt-20 md:pb-10 order-last md:order-first"
-                    data-aos="fade-left">
-                    <img src="{{ asset('img/landing/2.jpg') }}" alt="wallpaper" />
-                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="md:ml-20 md:mr-10 md:p-1 mt-14 mb-14 md:mt-15 md:mb-15 text-left md:pt-20 md:pb-10">
-                    <h5 class="text-xl font-extrabold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline"
-                        data-aos="fade-up">Pelayanan Laundry Yang Cepat</h5>
-                    <p class="font-poppins text-lg mt-2 mb-10 mr-5 md:ml-0 md:mr-0 tracking-widest text-white"
-                        data-aos="fade-up">
-                        Kami menghadirkan layanan laundry cepat, bersih, dan wangi dengan kualitas terbaik, memastikan
-                        pakaian Anda selalu segar dan siap pakai.
+
+            <!-- Section 3 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+                <div>
+                    <h5 class="text-2xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+                        Pelayanan Laundry Yang Cepat
+                    </h5>
+                    <p class="text-white text-lg leading-relaxed" data-aos="fade-up">
+                        Kami menghadirkan layanan laundry cepat, bersih, dan wangi dengan kualitas terbaik,
+                        memastikan pakaian Anda selalu segar dan siap pakai.
                     </p>
                 </div>
-                <div class="w-full pt-6 px-10 md:px-20 md:h-full md:pt-32 md:pb-10 order-first md:order-last"
-                    data-aos="fade-left">
-                    <img src="{{ asset('img/landing/3.jpg') }}" alt="wallpaper" />
+                <div data-aos="fade-left">
+                    <img src="{{ asset('img/landing/3.jpg') }}" alt="pelayanan cepat"
+                        class="w-full h-[300px] object-cover rounded-xl" />
                 </div>
             </div>
+
         </div>
     </div>
 
     <section class="pakaian section" id="pakaian">
-        <div class="bg-white h-auto">
-            <div class="mx-auto pb-10 pt-8">
-                <h1 class="font-semibold text-2xl text-cyan-600 text-center pb-3 sm:pb-3 md:pb-3 lg:pb-8">Apa saja yang
-                    bisa kami laundry?</h1>
-                <!-- Narutanaka AKA Aferil -->
-                <p class="text-center text-sm text-gray-400 pb-2"><i class="fa-solid fa-arrow-left"></i>
-                    Geser untuk lihat jenis pakaian lain <i class="fa-solid fa-arrow-right"></i></p>
+        <div class="bg-white py-0">
 
-                <div class="flex md:flex justify-center">
-                    <div class="carousel rounded w-96 md:w-full gap-2 ml-1 mr-1 sm:ml-0 sm:mr-0 md:ml-7 md:mr-5">
-                        <div class="carousel-item w-1/2 md:w-1/3">
-                            <div class="border border-gray-200 dark:border-slate-300 rounded bg-gray-200 shadow-lg w-46 hover:border-blue-600 hover:text-blue-600 text-gray-500"
-                                data-aos="fade-up">
-                                <img src="{{ asset('img/landing/Baju.jpg') }}" alt="game"
-                                    class="rounded-t w-46" />
-                                <h1 class="mt-2 font-semibold text-center text-sm md:text-md text-black">Baju</h1>
-
-                            </div>
-                        </div>
-                        <div class="carousel-item w-1/2 md:w-1/3">
-                            <div class="border border-gray-200 dark:border-slate-300 rounded bg-gray-200 shadow-lg w-46 hover:border-blue-600 hover:text-blue-600 text-gray-500"
-                                data-aos="fade-up">
-                                <img src="{{ asset('img/landing/Celana.jpg') }}" alt="game"
-                                    class="rounded-t w-46" />
-                                <h1 class="mt-2 mb-2 font-semibold text-center text-sm md:text-md text-black">Celana
-                                </h1>
-                            </div>
-                        </div>
-                        <div class="carousel-item w-1/2 md:w-1/3">
-                            <div class="border border-gray-200 dark:border-slate-300 rounded bg-gray-200 shadow-lg w-46 hover:border-blue-600 hover:text-blue-600 text-gray-500"
-                                data-aos="fade-up">
-                                <img src="{{ asset('img/landing/Selimut.jpg') }}" alt="game"
-                                    class="rounded-t w-46" />
-                                <h1 class="mt-2 mb-2 font-semibold text-center text-sm md:text-md text-black">Selimut
-                                </h1>
-                            </div>
-                        </div>
-                        <div class="carousel-item w-1/2 md:w-1/3">
-                            <div class="border border-gray-200 dark:border-slate-300 rounded bg-gray-200 shadow-lg w-46 hover:border-blue-600 hover:text-blue-600 text-gray-500"
-                                data-aos="fade-up">
-                                <img src="{{ asset('img/landing/Jas.jpg') }}" alt="game"
-                                    class="rounded-t w-46" />
-                                <h1 class="mt-2 mb-2 font-semibold text-center text-sm md:text-md text-black">Jas</h1>
-                            </div>
-                        </div>
-                        {{-- <div class="carousel-item w-1/2 md:w-1/4">
-                            <div class="border border-gray-200 dark:border-slate-300 rounded bg-gray-200 shadow-lg w-46 hover:border-blue-600 hover:text-blue-600 text-gray-500"
-                                data-aos="fade-up">
-                                <img src="{{ asset('img/landing/Baju.jpg') }}" alt="game"
-                                    class="rounded-t w-46" />
-                                <h1 class="mt-2 mb-2 font-semibold text-center text-sm md:text-md text-black">Wasilah</h1>
-                            </div>
-                        </div> --}}
-                    </div>
-                </div>
-
-                <p class="text-center text-sm text-gray-400 pb-2 pt-2"><i class="fa-solid fa-arrow-left"></i> Geser
-                    untuk lihat jenis pakaian lain <i class="fa-solid fa-arrow-right"></i></p>
-
+            <!-- Banner Full Width -->
+            <div class="w-full">
+                <img src="{{ asset('img/landing/laundry-banner.png') }}" alt="Banner Kantil Laundry"
+                    class="w-full h-auto" />
             </div>
+
         </div>
     </section>
 
@@ -314,7 +286,8 @@
                         data-aos="fade-up">Alamat</h1>
                     <p class="font-poppins text-lg mt-1 mb-10 mr-5 md:ml-0 md:mr-0 tracking-widest text-white"
                         data-aos="fade-up">
-                        Jl. H. Sulaiman No.21, RT.4/RW.1, Petukangan Utara, Kec. Pesanggrahan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12260
+                        Jl. H. Sulaiman No.21, RT.4/RW.1, Petukangan Utara, Kec. Pesanggrahan, Kota Jakarta Selatan,
+                        Daerah Khusus Ibukota Jakarta 12260
                     </p>
 
                     <h1 class="text-2xl font-extrabold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline"

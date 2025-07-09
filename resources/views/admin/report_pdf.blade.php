@@ -21,7 +21,7 @@
     <header class="text-center">
         <div class="row">
             <div class="col-4">
-                <h1>{{ config('app.name') }}</h1>
+                <h1>Kantil Laundry</h1>
             </div>
             <div class="col-4">
                 <h3>Laporan Transaksi Bulan {{ $monthInput }} Tahun {{ $yearInput }}</h3>

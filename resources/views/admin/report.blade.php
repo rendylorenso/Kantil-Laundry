@@ -144,7 +144,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-
                                                 <button type="submit" id="btn-cetak-member"
                                                     class="mt-3 btn btn-success d-none">Cetak</button>
                                             </form>
@@ -233,6 +232,14 @@
 
         tahunInput2.addEventListener('change', function() {
             btnCetak2.classList.remove('d-none');
+        });
+    </script>
+    <script>
+        const tahunMember = document.getElementById('tahun-member');
+        const btnMember = document.getElementById('btn-cetak-member');
+
+        tahunMember.addEventListener('change', function() {
+            btnMember.classList.remove('d-none');
         });
     </script>
 @endsection

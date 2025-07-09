@@ -189,20 +189,18 @@ class ReportController extends Controller
             ->orderBy('created_at', 'asc')
             ->get();
 
+        // Filter hanya yang sesuai tahun input untuk ditampilkan di tabel
         $members = $allMembers->filter(function ($m) use ($yearInput) {
-            return Carbon::parse($m->created_at)->year == $yearInput;
+            return \Carbon\Carbon::parse($m->created_at)->format('Y') == $yearInput;
         });
 
-        $totalNew = $members->count();
-        $totalOld = $allMembers->filter(function ($m) use ($yearInput) {
-            return Carbon::parse($m->created_at)->year < $yearInput;
-        })->count();
-
         $pdf = PDF::loadView('admin.report_member_pdf', [
-            'yearInput' => $yearInput,
-            'members'   => $members,
-            'totalNew'  => $totalNew,
-            'totalOld'  => $totalOld,
+            'yearInput'       => $yearInput,
+            'members'         => $members,
+            'totalNew'        => $members->count(),
+            'totalOld'        => $allMembers->filter(function ($m) use ($yearInput) {
+                return \Carbon\Carbon::parse($m->created_at)->format('Y') < $yearInput;
+            })->count(),
         ]);
 
         return $pdf->stream('laporan-member-' . $yearInput . '.pdf');

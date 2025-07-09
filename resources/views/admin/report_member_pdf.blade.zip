@@ -16,8 +16,7 @@
             margin-top: 10px;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid #999;
             padding: 6px 4px;
             text-align: left;
@@ -47,6 +46,7 @@
                 <th>Tgl Daftar</th>
                 <th>Point</th>
                 <th>Total Transaksi</th>
+                <th>Total Komplain</th>
             </tr>
         </thead>
         <tbody>
@@ -59,12 +59,10 @@
                         @switch($m->gender)
                             @case('L')
                                 Laki‑Laki
-                            @break
-
+                                @break
                             @case('P')
                                 Perempuan
-                            @break
-
+                                @break
                             @default
                                 -
                         @endswitch
@@ -74,18 +72,19 @@
                     <td>{{ \Carbon\Carbon::parse($m->created_at)->translatedFormat('d F Y') }}</td>
                     <td>{{ $m->point }}</td>
                     <td>{{ $m->transactions_count }}</td>
+                    <td>{{ $m->complaints_count }}</td>
                 </tr>
-                @empty
-                    <tr>
-                        <td colspan="10" style="text-align:center;">Tidak ada data</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+            @empty
+                <tr>
+                    <td colspan="10" style="text-align:center;">Tidak ada data</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
 
-        <p style="margin-top:20px;">Total Member Tahun {{ $yearInput }}: <strong>{{ $members->count() }}</strong></p>
-        <p>Total Pelanggan Baru: <strong>{{ $totalNew }}</strong></p>
-        <p>Total Pelanggan Lama: <strong>{{ $totalOld }}</strong></p>
-    </body>
+    <p style="margin-top:20px;">Total Member Tahun {{ $yearInput }}: <strong>{{ $members->count() }}</strong></p>
+    <p>Total Pelanggan Baru: <strong>{{ $totalNew }}</strong></p>
+    <p>Total Pelanggan Lama: <strong>{{ $totalOld }}</strong></p>
+</body>
 
-    </html>
+</html>
