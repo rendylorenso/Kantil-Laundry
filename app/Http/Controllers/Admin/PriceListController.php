@@ -104,4 +104,11 @@ class PriceListController extends Controller
 
         return redirect()->route('admin.price-lists.index')->with('success', 'Harga Satuan berhasil diperbarui!');
     }
+
+    public function destroy(PriceList $priceList): RedirectResponse
+    {
+        $priceList->delete();
+        return redirect()->route('admin.price-lists.index')->with('success', 'Harga satuan berhasil dihapus!');
+    }
+
 }

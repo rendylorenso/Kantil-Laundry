@@ -19,6 +19,7 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+
     <!-- /.content-header -->
     <div class="content">
         <div class="container-fluid">
@@ -73,7 +74,8 @@
                                                         <div class="col-8">
                                                             <select class="form-control" id="barang" name="item">
                                                                 @foreach ($items as $item)
-                                                                    <option value="{{ $item->id }}">{{ $item->name }}
+                                                                    <option value="{{ $item->id }}">
+                                                                        {{ $item->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -157,6 +159,16 @@
                                                             data-id="{{ $item->id }}" data-toggle="modal"
                                                             data-target="#changePriceModal"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
+                                                        <form action="{{ route('admin.price-lists.destroy', $item->id) }}"
+                                                            method="POST" style="display:inline;"
+                                                            onsubmit="return confirm('Yakin ingin menghapus harga ini?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="bg-red-600 hover:bg-red-800 duration-200 text-white rounded text-base px-2 py-2 border-0">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -227,6 +239,15 @@
                                                             data-toggle="modal" data-target="#changePriceModal">
                                                             Edit
                                                         </a>
+                                                        <form
+                                                            action="{{ route('admin.price-lists.kiloan.destroy', $item->id) }}"
+                                                            method="POST" style="display:inline;"
+                                                            onsubmit="return confirm('Yakin ingin menghapus harga ini?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-danger text-white">Hapus</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
