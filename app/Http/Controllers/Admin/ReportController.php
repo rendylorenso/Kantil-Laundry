@@ -172,39 +172,56 @@ class ReportController extends Controller
     public function printMember(Request $request): Response
     {
         $yearInput = $request->input('year');
+        $monthInput = $request->input('month');
 
-        if (!is_numeric($yearInput)) {
-            abort(400, 'Input tahun tidak valid.');
+        if (!is_numeric($yearInput) || !is_numeric($monthInput)) {
+            abort(400, 'Input bulan/tahun tidak valid.');
         }
 
         Carbon::setLocale('id');
+        $monthName = Carbon::createFromDate($yearInput, $monthInput, 1)->translatedFormat('F');
 
         $allMembers = User::where('role', 2)
             ->withCount([
-                'transactions',
+                'transactions as transactions_count' => function ($q) use ($yearInput, $monthInput) {
+                    $q->whereYear('created_at', $yearInput)
+                        ->whereMonth('created_at', $monthInput);
+                },
                 'complaint_suggestions as complaints_count' => function ($q) {
                     $q->where('type', 2);
                 },
             ])
+            ->with(['transactions' => function ($q) use ($yearInput, $monthInput) {
+                $q->whereYear('created_at', $yearInput)
+                    ->whereMonth('created_at', $monthInput);
+            }])
             ->orderBy('created_at', 'asc')
             ->get();
 
-        $members = $allMembers->filter(function ($m) use ($yearInput) {
-            return Carbon::parse($m->created_at)->year == $yearInput;
+        $members = $allMembers->filter(function ($m) use ($yearInput, $monthInput) {
+            $created = Carbon::parse($m->created_at);
+            return $created->year == $yearInput && $created->month == $monthInput;
+        })->map(function ($member) {
+            // Hitung total point bulan itu
+            $member->monthly_point = $member->transactions->sum('point');
+            return $member;
         });
 
         $totalNew = $members->count();
-        $totalOld = $allMembers->filter(function ($m) use ($yearInput) {
-            return Carbon::parse($m->created_at)->year < $yearInput;
+        $totalOld = $allMembers->filter(function ($m) use ($yearInput, $monthInput) {
+            $created = Carbon::parse($m->created_at);
+            return $created->lt(Carbon::create($yearInput, $monthInput, 1));
         })->count();
 
         $pdf = PDF::loadView('admin.report_member_pdf', [
-            'yearInput' => $yearInput,
-            'members'   => $members,
-            'totalNew'  => $totalNew,
-            'totalOld'  => $totalOld,
+            'yearInput'  => $yearInput,
+            'monthInput' => $monthInput,
+            'monthName'  => $monthName,
+            'members'    => $members,
+            'totalNew'   => $totalNew,
+            'totalOld'   => $totalOld,
         ]);
 
-        return $pdf->stream('laporan-member-' . $yearInput . '.pdf');
+        return $pdf->stream('laporan-member-' . $monthName . '-' . $yearInput . '.pdf');
     }
 }

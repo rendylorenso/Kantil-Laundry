@@ -32,7 +32,7 @@
 <body>
     <h2 style="text-align:center; margin-bottom:10px;">
         Laporan Member<br>
-        <small>{{ $yearInput }}</small>
+        <small>{{ $monthName }} {{ $yearInput }}</small>
     </h2>
 
     <table>
@@ -72,7 +72,7 @@
                     <td>{{ $m->address }}</td>
                     <td>{{ $m->phone_number }}</td>
                     <td>{{ \Carbon\Carbon::parse($m->created_at)->translatedFormat('d F Y') }}</td>
-                    <td>{{ $m->point }}</td>
+                    <td>{{ $m->monthly_point }}</td>
                     <td>{{ $m->transactions_count }}</td>
                 </tr>
                 @empty
@@ -85,7 +85,6 @@
 
         <p style="margin-top:20px;">Total Member Tahun {{ $yearInput }}: <strong>{{ $members->count() }}</strong></p>
         <p>Total Pelanggan Baru: <strong>{{ $totalNew }}</strong></p>
-        <p>Total Pelanggan Lama: <strong>{{ $totalOld }}</strong></p>
     </body>
 
     </html>

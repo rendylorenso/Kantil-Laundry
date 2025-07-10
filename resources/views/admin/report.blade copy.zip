@@ -130,8 +130,6 @@
                                             <form action="{{ route('admin.reports.printMember') }}" method="post"
                                                 target="_blank">
                                                 @csrf
-
-                                                <!-- ✅ Tambahkan kembali dropdown Tahun -->
                                                 <div class="form-group row">
                                                     <label for="tahun-member"
                                                         class="col-sm-4 col-form-label">Tahun</label>
@@ -146,31 +144,12 @@
                                                         </select>
                                                     </div>
                                                 </div>
-
-                                                <!-- Sudah benar bagian Bulan -->
-                                                <div class="form-group row">
-                                                    <label for="bulan-member"
-                                                        class="col-sm-4 col-form-label">Bulan</label>
-                                                    <div class="col-sm-6">
-                                                        <select class="form-control" id="bulan-member" name="month"
-                                                            required>
-                                                            <option selected disabled>-- Pilih Bulan --</option>
-                                                            @for ($m = 1; $m <= 12; $m++)
-                                                                <option value="{{ $m }}">
-                                                                    {{ DateTime::createFromFormat('!m', $m)->format('F') }}
-                                                                </option>
-                                                            @endfor
-                                                        </select>
-                                                    </div>
-                                                </div>
-
                                                 <button type="submit" id="btn-cetak-member"
                                                     class="mt-3 btn btn-success d-none">Cetak</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -257,16 +236,10 @@
     </script>
     <script>
         const tahunMember = document.getElementById('tahun-member');
-        const bulanMember = document.getElementById('bulan-member');
         const btnMember = document.getElementById('btn-cetak-member');
 
-        function toggleCetakMember() {
-            const year = tahunMember.value;
-            const month = bulanMember.value;
-            btnMember.classList.toggle('d-none', !(year && month));
-        }
-
-        tahunMember.addEventListener('change', toggleCetakMember);
-        bulanMember.addEventListener('change', toggleCetakMember);
+        tahunMember.addEventListener('change', function() {
+            btnMember.classList.remove('d-none');
+        });
     </script>
 @endsection
