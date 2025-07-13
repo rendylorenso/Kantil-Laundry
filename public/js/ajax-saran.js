@@ -16,7 +16,7 @@ $(document).on("click", ".lihat-isi", function () {
         method: "GET",
         dataType: "json",
         success: function (data) {
-            $("#isi-aduan").val(data.body);
+            $("#isi-aduan").val(data.feedback);
             // $("#isi-aduan").val(data.message);
             $("#balas").prop("disabled", false);
             $("#balas").val("");

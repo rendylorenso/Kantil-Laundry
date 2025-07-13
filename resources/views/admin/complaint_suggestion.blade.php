@@ -50,8 +50,11 @@
                                                         {{-- <button href="#" class="badge badge-success lihat-isi"
                                                             data-id="{{ $complaint->id }}">Lihat isi
                                                             komplain</button> --}}
-                                                            <button href="#" class="bg-yellow-500 hover:bg-yellow-900 duration-200 text-white rounded text-base px-2 py-1 lihat-isi"
-                                                            data-id="{{ $complaint->id }}"><i class="fa-solid fa-eye"></i></button>
+                                                        <button type="button"
+                                                            class="bg-yellow-500 hover:bg-yellow-900 duration-200 text-white rounded text-base px-2 py-1 lihat-isi"
+                                                            data-id="{{ $complaint->id }}">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                        </button>
 
                                                         {{-- <button href="#" class="bg-re-600 hover:bg-re-900 duration-200 text-white rounded text-base px-2 py-2 btn-update-cost"
                                                         data-id="{{ $complaint->id }}">Lihat isi
@@ -72,9 +75,12 @@
                                                         {{-- <button href="#" class="badge badge-success lihat-isi"
                                                             data-id="{{ $suggestion->id }}">Lihat isi
                                                             saran</button> --}}
-                                                            <button href="#" class="bg-blue-500 hover:bg-blue-900 duration-200 text-white rounded text-base px-2 py-1 lihat-isi"
-                                                            data-id="{{ $suggestion->id }}"><i class="fa-solid fa-eye"></i></button>
-                                                        </td>
+                                                        <button type="button"
+                                                            class="bg-blue-500 hover:bg-blue-900 duration-200 text-white rounded text-base px-2 py-1 lihat-isi"
+                                                            data-id="{{ $suggestion->id }}">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                        </button>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             <tr>
