@@ -49,7 +49,7 @@
                 <a href="{{ route('admin.complaint-suggestions.index') }}"
                     class="nav-link text-white {{ request()->routeIs('admin.complaint-suggestions.index') ? 'active bg-white' : '' }}">
                     <i class="nav-icon fas fa-sticky-note"></i>
-                    <p>Feedback</p>
+                    <p>Saran / Komplain</p>
                 </a>
             </li>
             <li class="nav-item">

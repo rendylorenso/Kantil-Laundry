@@ -43,17 +43,7 @@ class ComplaintSuggestionController extends Controller
      */
     public function show(ComplaintSuggestion $complaintSuggestion): JsonResponse
     {
-        $complaintSuggestion->load('user', 'transaction');
-
-        return response()->json([
-            'id' => $complaintSuggestion->id,
-            'body' => $complaintSuggestion->body,
-            'type' => $complaintSuggestion->type,
-            'reply' => $complaintSuggestion->reply,
-            'user_name' => $complaintSuggestion->user->name,
-            'transaction_id' => $complaintSuggestion->transaction_id,
-            'created_at' => $complaintSuggestion->created_at->format('d/m/Y H:i'),
-        ]);
+        return response()->json($complaintSuggestion);
     }
 
     /**

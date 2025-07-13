@@ -19,7 +19,6 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-
     <!-- /.content-header -->
     <div class="content">
         <div class="container-fluid">
@@ -74,8 +73,7 @@
                                                         <div class="col-8">
                                                             <select class="form-control" id="barang" name="item">
                                                                 @foreach ($items as $item)
-                                                                    <option value="{{ $item->id }}">
-                                                                        {{ $item->name }}
+                                                                    <option value="{{ $item->id }}">{{ $item->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>

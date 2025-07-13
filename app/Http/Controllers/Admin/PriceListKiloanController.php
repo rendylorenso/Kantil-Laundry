@@ -49,5 +49,4 @@ class PriceListKiloanController extends Controller
         $priceListKiloan->delete();
         return redirect()->route('admin.price-lists.index')->with('success', 'Harga kiloan berhasil dihapus!');
     }
-
 }

@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('member123'),
             'user_code' => 'M0001',
             'name' => 'Member',
-            'phone_number' => '081296312674',
+            'phone_number' => '08974835297',
             'role' => Role::Member->value,
         ]);
         $user2->save();

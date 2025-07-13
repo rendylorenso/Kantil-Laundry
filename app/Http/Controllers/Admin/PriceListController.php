@@ -110,5 +110,4 @@ class PriceListController extends Controller
         $priceList->delete();
         return redirect()->route('admin.price-lists.index')->with('success', 'Harga satuan berhasil dihapus!');
     }
-
 }

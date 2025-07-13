@@ -36,7 +36,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light-primary elevation-4 bg-gray-700">
+        <aside class="main-sidebar sidebar-light-primary elevation-4 bg-blue-700">
             <!-- Brand Logo -->
             <a href="" class="brand-link mt-2">
                 <div class="row text-white">
