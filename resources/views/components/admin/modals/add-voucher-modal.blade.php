@@ -26,6 +26,10 @@
                         <textarea rows="3" type="text" class="form-control" id="details" name="details"
                             placeholder="Detail Voucher" required></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="expired">Expired Promo Voucher</label>
+                        <input type="datetime-local" class="form-control" name="expired_at" id="expired_at" required>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

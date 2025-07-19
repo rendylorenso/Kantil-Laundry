@@ -57,6 +57,7 @@
                                         <th>Poin Diperlukan</th>
                                         <th>Keterangan</th>
                                         <th>Detail</th>
+                                        <th>Expired</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -68,6 +69,7 @@
                                             <td>{{ $voucher->point_need }}</td>
                                             <td>{{ $voucher->description }}</td>
                                             <td>{{ $voucher->details }}</td>
+                                            <td>{{ $voucher->expired_at }}</td>
                                             <td>
                                                 @if ($voucher->active_status != 0)
                                                     <div class="form-check">

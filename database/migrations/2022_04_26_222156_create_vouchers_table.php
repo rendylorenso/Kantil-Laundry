@@ -21,7 +21,9 @@ return new class extends Migration
             $table->boolean('active_status')->default(1);
             $table->text('description');
             $table->text('details');
+            $table->timestamp('expired_at')->nullable();
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

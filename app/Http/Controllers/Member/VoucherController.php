@@ -8,6 +8,7 @@ use App\Models\Voucher;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class VoucherController extends Controller
 {
@@ -23,6 +24,14 @@ class VoucherController extends Controller
 
         if (!$user) {
             abort(403);
+        }
+
+        if (!$voucher->active_status) {
+            return redirect()->route('member.points.index')->with('error', 'Voucher sedang tidak aktif.');
+        }
+
+        if ($voucher->expired_at && $voucher->expired_at <= Carbon::now()) {
+            return redirect()->route('member.points.index')->with('error', 'Voucher sudah tidak berlaku (expired).');
         }
 
         // Check if member's points are sufficient to redeem
