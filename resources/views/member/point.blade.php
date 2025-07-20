@@ -93,12 +93,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $no = 1; @endphp
                                     @foreach ($memberVouchers as $voucher)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $voucher->voucher->name }}</td>
-                                            <td>{{ $voucher->voucher->description }}</td>
-                                        </tr>
+                                        @php
+                                            $relatedVoucher = $voucher->voucher;
+                                        @endphp
+
+                                        @if ($relatedVoucher && (is_null($relatedVoucher->expired_at) || $relatedVoucher->expired_at > now()))
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $relatedVoucher->name }}</td>
+                                                <td>{{ $relatedVoucher->details }}</td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>
